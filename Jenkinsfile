@@ -23,7 +23,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sshagent(['app-server-ssh']) {
+                sshagent(['ec2-ssh']) {
                     sh '''
                     scp -o StrictHostKeyChecking=no target/*.jar $APP_SERVER:/home/ec2-user/
                     ssh -o StrictHostKeyChecking=no $APP_SERVER "pkill -f jar || true"
